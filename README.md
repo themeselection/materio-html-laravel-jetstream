@@ -77,13 +77,13 @@ before beginning your Master Laravel Jetstream project. In addition, you may use
 ```bash
 // without teams support
 
-php artisan jetstream_master:swap livewire
+php artisan jetstream_materio:swap livewire
 
 or
 
 // with teams support
 
-php artisan jetstream_master:swap livewire --teams
+php artisan jetstream_materio:swap livewire --teams
 ```
 
 This will publish overrides to enable Bootstrap like the good old days!
