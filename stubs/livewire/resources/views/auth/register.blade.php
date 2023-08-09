@@ -14,96 +14,87 @@ $customizerHidden = 'customizer-hide';
 
 @section('content')
 <div class="authentication-wrapper authentication-cover">
+  <!-- Logo -->
+  <a href="{{url('/')}}" class="auth-cover-brand d-flex align-items-center gap-2">
+    <span class="app-brand-logo demo">@include('_partials.macros',["height"=>20])</span>
+    <span class="app-brand-text demo text-heading fw-semibold">{{config('variables.templateName')}}</span>
+  </a>
+  <!-- /Logo -->
   <div class="authentication-inner row m-0">
     <!-- /Left Text -->
-    <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center">
-      <div class="flex-row text-center mx-auto">
-        <img src="{{asset('assets/img/pages/register-'.$configData['style'].'.png')}}" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/register-light.png" data-app-dark-img="pages/register-dark.png">
-        <div class="mx-auto">
-          <h3>A few clicks to get started 🚀</h3>
-          <p>
-            Let’s get started with your 14 days free trial and <br> start building your application today.
-          </p>
-        </div>
+    <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center justify-content-center p-5 pb-2">
+      <div>
+        <img src="{{asset('assets/img/illustrations/auth-cover-register-illustration-'.$configData['style'].'.png')}}" class="authentication-image-model d-none d-lg-block" alt="auth-model" data-app-light-img="illustrations/auth-cover-register-illustration-light.png" data-app-dark-img="illustrations/auth-cover-register-illustration-dark.png">
       </div>
+      <img src="{{asset('assets/img/illustrations/tree-2.png')}}" alt="tree" class="authentication-image-tree">
+      <img src="{{asset('assets/img/illustrations/auth-cover-mask-'.$configData['style'].'.png')}}" class="scaleX-n1-rtl authentication-image d-none d-lg-block w-75" alt="triangle-bg" data-app-light-img="illustrations/auth-cover-mask-light.png" data-app-dark-img="illustrations/auth-cover-mask-dark.png">
     </div>
     <!-- /Left Text -->
 
     <!-- Register Card -->
-    <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
-      <div class="w-px-400 mx-auto">
-        <!-- Logo -->
-        <div class="app-brand mb-4">
-          <a href="{{url('/')}}" class="app-brand-link gap-2 mb-2">
-            <span class="app-brand-logo demo">@include('_partials.macros',['height'=>20,'withbg' => "fill: #fff;"])</span>
-            <span class="app-brand-text demo h3 mb-0 fw-bold">{{config('variables.templateName')}}</span>
-          </a>
-        </div>
-        <!-- /Logo -->
-
-        <!-- Register Card -->
+    <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg position-relative py-sm-5 px-4 py-4">
+      <div class="w-px-400 mx-auto pt-5 pt-lg-0">
         <h4 class="mb-2">Adventure starts here 🚀</h4>
         <p class="mb-4">Make your app management easy and fun!</p>
 
         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
           @csrf
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="username" name="name" placeholder="johndoe" autofocus value="{{ old('name') }}" />
+          <div class="form-floating form-floating-outline mb-3">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="username" name="name" placeholder="Enter your username" autofocus value="{{ old('name') }}">
+            <label for="username">Username</label>
             @error('name')
-            <span class="invalid-feedback" role="alert">
-              <span class="fw-medium">{{ $message }}</span>
-            </span>
+              <span class="invalid-feedback" role="alert">
+                <span class="fw-medium">{{ $message }}</span>
+              </span>
             @enderror
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@example.com" value="{{ old('email') }}" />
+          <div class="form-floating form-floating-outline mb-3">
+            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter your email" value="{{ old('email') }}">
+            <label for="email">Email</label>
             @error('email')
-            <span class="invalid-feedback" role="alert">
-              <span class="fw-medium">{{ $message }}</span>
-            </span>
+              <span class="invalid-feedback" role="alert">
+                <span class="fw-medium">{{ $message }}</span>
+              </span>
             @enderror
           </div>
           <div class="mb-3 form-password-toggle">
-            <label class="form-label" for="password">Password</label>
             <div class="input-group input-group-merge @error('password') is-invalid @enderror">
-              <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-              <span class="input-group-text cursor-pointer">
-                <i class="bx bx-hide"></i>
-              </span>
+              <div class="form-floating form-floating-outline">
+                <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                <label for="password">Password</label>
+              </div>
+              <span class="input-group-text cursor-pointer"><i class="mdi mdi-eye-off-outline"></i></span>
             </div>
             @error('password')
-            <span class="invalid-feedback" role="alert">
-              <span class="fw-medium">{{ $message }}</span>
-            </span>
+              <span class="invalid-feedback" role="alert">
+                <span class="fw-medium">{{ $message }}</span>
+              </span>
             @enderror
           </div>
-
           <div class="mb-3 form-password-toggle">
-            <label class="form-label" for="password-confirm">Confirm Password</label>
             <div class="input-group input-group-merge">
-              <input type="password" id="password-confirm" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-              <span class="input-group-text cursor-pointer">
-                <i class="bx bx-hide"></i>
-              </span>
+              <div class="form-floating form-floating-outline">
+                <input type="password" id="password-confirm" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                <label for="password-confirm">Confirm Password</label>
+              </div>
+              <span class="input-group-text cursor-pointer"><i class="mdi mdi-eye-off-outline"></i></span>
             </div>
           </div>
           @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-          <div class="mb-1">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="terms" name="terms" />
-              <label class="form-check-label" for="terms">
-                I agree to the
-                <a href="{{ route('terms.show') }}" target="_blank">
-                  terms_of_service
-                </a> and
-                <a href="{{ route('policy.show') }}" target="_blank">
-                  privacy_policy
-                </a>
-              </label>
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms" name="terms" />
+                <label class="form-check-label" for="terms">
+                  I agree to
+                  <a href="{{ route('terms.show') }}" target="_blank">
+                    privacy policy
+                  </a> &
+                  <a href="{{ route('policy.show') }}" target="_blank">
+                    terms
+                  </a>
+                </label>
+              </div>
             </div>
-          </div>
           @endif
           <button type="submit" class="btn btn-primary d-grid w-100">Sign up</button>
         </form>
@@ -121,17 +112,21 @@ $customizerHidden = 'customizer-hide';
           <div class="divider-text">or</div>
         </div>
 
-        <div class="d-flex justify-content-center">
-          <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
-            <i class="tf-icons bx bxl-facebook"></i>
+        <div class="d-flex justify-content-center gap-2">
+          <a href="javascript:;" class="btn btn-icon btn-lg rounded-pill btn-text-facebook">
+            <i class="tf-icons mdi mdi-24px mdi-facebook"></i>
           </a>
 
-          <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
-            <i class="tf-icons bx bxl-google-plus"></i>
+          <a href="javascript:;" class="btn btn-icon btn-lg rounded-pill btn-text-twitter">
+            <i class="tf-icons mdi mdi-24px mdi-twitter"></i>
           </a>
 
-          <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-            <i class="tf-icons bx bxl-twitter"></i>
+          <a href="javascript:;" class="btn btn-icon btn-lg rounded-pill btn-text-github">
+            <i class="tf-icons mdi mdi-24px mdi-github"></i>
+          </a>
+
+          <a href="javascript:;" class="btn btn-icon btn-lg rounded-pill btn-text-google-plus">
+            <i class="tf-icons mdi mdi-24px mdi-google"></i>
           </a>
         </div>
       </div>

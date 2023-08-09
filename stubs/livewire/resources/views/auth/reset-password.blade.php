@@ -13,85 +13,84 @@ $customizerHidden = 'customizer-hide';
 @endsection
 
 @section('content')
-<div class="authentication-wrapper authentication-cover">
-  <div class="authentication-inner row m-0">
-    <!-- /Left Text -->
-    <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center">
-      <div class="flex-row text-center mx-auto">
-        <img src="{{asset('assets/img/pages/reset-password-'.$configData['style'].'.png')}}" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/reset-password-light.png" data-app-dark-img="pages/reset-password-dark.png">
-        <div class="mx-auto">
-          <h3>Setup new password 👩🏻‍💻</h3>
-          <p>
-            You can change your password for security <br> reasons or reset it if you forget it.
-          </p>
+<div class="position-relative">
+  <div class="authentication-wrapper authentication-cover">
+    <!-- Logo -->
+      <a href="{{url('/')}}" class="auth-cover-brand d-flex align-items-center gap-2">
+        <span class="app-brand-logo demo">@include('_partials.macros',["height"=>20])</span>
+        <span class="app-brand-text demo text-heading fw-semibold">{{config('variables.templateName')}}</span>
+      </a>
+    <!-- /Logo -->
+    <div class="authentication-inner row m-0">
+
+      <!-- /Left Section -->
+      <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center justify-content-center p-5 pb-2">
+        <div>
+          <img src="{{asset('assets/img/illustrations/auth-cover-reset-password-illustration-'.$configData['style'].'.png')}}" class="authentication-image-model d-none d-lg-block" alt="auth-model" data-app-light-img="illustrations/auth-cover-reset-password-illustration-light.png" data-app-dark-img="illustrations/auth-cover-reset-password-illustration-dark.png">
         </div>
+        <img src="{{asset('assets/img/illustrations/tree-3.png')}}" alt="tree" class="authentication-image-tree">
+        <img src="{{asset('assets/img/illustrations/auth-cover-mask-'.$configData['style'].'.png')}}" class="scaleX-n1-rtl authentication-image d-none d-lg-block w-75" alt="triangle-bg" data-app-light-img="illustrations/auth-cover-mask-light.png" data-app-dark-img="illustrations/auth-cover-mask-dark.png">
       </div>
-    </div>
-    <!-- /Left Text -->
-    <!-- Reset Password -->
-    <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
-      <div class="w-px-400 mx-auto">
-        <!-- Logo -->
-        <div class="app-brand justify-content-center mb-4">
-          <a href="{{url('/')}}" class="app-brand-link gap-2 mb-2">
-            <span class="app-brand-logo demo">@include('_partials.macros',['height'=>20,'withbg' => "fill: #fff;"])</span>
-            <span class="app-brand-text demo h3 mb-0 fw-bold">{{ config('variables.templateName') }}</span>
-          </a>
-        </div>
-        <!-- /Logo -->
-        <h4 class="mb-2">Reset Password 🔒</h4>
+      <!-- /Left Section -->
+
+      <!-- Reset Password -->
+      <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg position-relative py-sm-5 px-4 py-4">
+        <div class="w-px-400 mx-auto pt-5 pt-lg-0">
+          <h4 class="mb-2">Reset Password 🔒</h4>
+          <p class="mb-4">Your new password must be different from previously used passwords</p>
         <form id="formAuthentication" class="mb-3" action="{{ route('password.update') }}" method="POST">
           @csrf
           <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@example.com" value="{{Request()->email}}" readonly />
+          <div class="form-floating form-floating-outline mb-3">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter your email" autofocus value="{{Request()->email}}" readonly />
+            <label for="email">Email</label>
             @error('email')
-            <span class="invalid-feedback" role="alert">
-              <span class="fw-medium">{{ $message }}</span>
-            </span>
+              <span class="invalid-feedback" role="alert">
+                <span class="fw-medium">{{ $message }}</span>
+              </span>
             @enderror
           </div>
 
           <div class="mb-3 form-password-toggle">
-            <label class="form-label" for="password">New Password</label>
             <div class="input-group input-group-merge @error('password') is-invalid @enderror">
-              <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" autofocus />
-              <span class="input-group-text cursor-pointer">
-                <i class="bx bx-hide"></i>
-              </span>
+              <div class="form-floating form-floating-outline">
+                <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" autofocus/>
+                <label for="password">New Password</label>
+              </div>
+              <span class="input-group-text cursor-pointer"><i class="mdi mdi-eye-off-outline"></i></span>
             </div>
             @error('password')
-            <span class="invalid-feedback" role="alert">
-              <span class="fw-medium">{{ $message }}</span>
-            </span>
+              <span class="invalid-feedback" role="alert">
+                <span class="fw-medium">{{ $message }}</span>
+              </span>
             @enderror
           </div>
+
           <div class="mb-3 form-password-toggle">
-            <label class="form-label" for="confirm-password">Confirm Password</label>
             <div class="input-group input-group-merge">
-              <input type="password" id="confirm-password" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-              <span class="input-group-text cursor-pointer">
-                <i class="bx bx-hide"></i>
-              </span>
+              <div class="form-floating form-floating-outline">
+                <input type="password" id="confirm-password" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                <label for="confirm-password">Confirm Password</label>
+              </div>
+              <span class="input-group-text cursor-pointer"><i class="mdi mdi-eye-off-outline"></i></span>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary d-grid w-100 mb-3">
-            Set new password
-          </button>
+
+          <button type="submit" class="btn btn-primary d-grid w-100 mb-3">Set new password</button>
           <div class="text-center">
             @if (Route::has('login'))
-            <a href="{{ route('login') }}">
-              <i class="bx bx-chevron-left scaleX-n1-rtl"></i>
+            <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">
+              <i class="mdi mdi-chevron-left scaleX-n1-rtl mdi-24px"></i>
               Back to login
             </a>
             @endif
           </div>
         </form>
+        </div>
       </div>
+      <!-- /Reset Password -->
     </div>
-    <!-- /Reset Password -->
   </div>
 </div>
 @endsection
