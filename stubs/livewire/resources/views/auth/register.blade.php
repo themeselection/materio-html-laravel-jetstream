@@ -99,7 +99,7 @@ $customizerHidden = 'customizer-hide';
                     <span class="fw-medium">{{ $message }}</span>
                 </div>
               @enderror
-            </div>
+            </div> 
           @endif
           <button type="submit" class="btn btn-primary d-grid w-100">Sign up</button>
         </form>
