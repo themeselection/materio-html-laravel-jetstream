@@ -39,7 +39,7 @@ $customizerHidden = 'customizer-hide';
         <p class="text-start mb-4">
           Please confirm password for security reasons or reset it by clicking on forgot password.
         </p>
-        <p class="fw-medium">Type your security code here</p>
+        <p class="fw-medium">Enter your password</p>
         <form id="twoStepsForm" action="{{ route('password.confirm') }}" method="POST">
           @csrf
 
