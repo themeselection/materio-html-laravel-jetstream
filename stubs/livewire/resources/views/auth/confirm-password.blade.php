@@ -56,15 +56,8 @@ $customizerHidden = 'customizer-hide';
               @enderror
             </div>
           </div>
-
           <button type="submit" class="btn btn-primary d-grid w-100 mb-3">Confirm Password</button>
         </form>
-
-        <p class="text-center mt-2">
-          @if (Route::has('password.request'))
-          <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
-          @endif
-        </p>
       </div>
     </div>
     <!-- / Verify email -->
