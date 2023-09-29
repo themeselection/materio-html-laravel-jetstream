@@ -1,7 +1,10 @@
 {
+  "name": "Materio",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "npm run development",
+    "build": "npm run build",
     "development": "mix",
     "watch": "mix watch",
     "watch-poll": "mix watch -- --watch-options-poll=1000",
@@ -34,13 +37,15 @@
     "autoprefixer": "10.4.14",
     "webpack": "5.88.1",
     "webpack-cli": "4.9.1",
-    "prop-types": "15.8.1"
+    "prop-types": "15.8.1",
+    "sass": "1.63.6"
   },
   "resolutions": {
     "autoprefixer": "10.4.14",
     "webpack": "5.88.1",
     "webpack-cli": "4.9.1",
-    "prop-types": "15.8.1"
+    "prop-types": "15.8.1",
+    "sass": "1.63.6"
   },
   "browserslist": [
     ">= 1%",
@@ -81,16 +86,15 @@
   },
   "dependencies": {
     "@mdi/font": "7.2.96",
-    "@fullcalendar/core": "6.1.8",
-    "@fullcalendar/daygrid": "6.1.8",
-    "@fullcalendar/interaction": "6.1.8",
-    "@fullcalendar/list": "6.1.8",
-    "@fullcalendar/timegrid": "6.1.8",
-    "@fullcalendar/timeline": "6.1.8",
+    "@fullcalendar/core": "6.1.9",
+    "@fullcalendar/daygrid": "6.1.9",
+    "@fullcalendar/interaction": "6.1.9",
+    "@fullcalendar/list": "6.1.9",
+    "@fullcalendar/timegrid": "6.1.9",
+    "@fullcalendar/timeline": "6.1.9",
     "@popperjs/core": "2.11.8",
     "@simonwep/pickr": "1.8.2",
     "@yaireo/tagify": "4.17.8",
-    "alpinejs": "3.12.3",
     "animate.css": "4.1.1",
     "aos": "2.3.4",
     "apexcharts-clevision": "3.28.5",
@@ -150,4 +154,4 @@
     "toastr": "2.1.4",
     "typeahead.js": "0.11.1"
   }
-} 
+}

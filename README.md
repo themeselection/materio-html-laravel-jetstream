@@ -1,34 +1,33 @@
-# master-laravel-bootstrap-jetstream
+# materio-laravel-bootstrap-jetstream
 
-[![Latest Stable Version](https://poser.pugx.org/themeselection/master-laravel-bootstrap-jetstream/v)](//packagist.org/packages/themeselection/master-laravel-bootstrap-jetstream)
-[![License](https://poser.pugx.org/themeselection/master-laravel-bootstrap-jetstream/license)](//packagist.org/packages/themeselection/master-laravel-bootstrap-jetstream)
+[![Latest Stable Version](https://poser.pugx.org/themeselection/materio-laravel-bootstrap-jetstream/v)](//packagist.org/packages/themeselection/materio-laravel-bootstrap-jetstream)
+[![License](https://poser.pugx.org/themeselection/materio-laravel-bootstrap-jetstream/license)](//packagist.org/packages/themeselection/materio-laravel-bootstrap-jetstream)
 
-##### Specially customized Laravel jetstream's scaffolding for [Master html + laravel admin Template](https://1.envato.market/Master_admin). It'll not work with any other project.
-[Download from packagist](https://packagist.org/packages/themeselection/master-laravel-bootstrap-jetstream)
+##### Specially customized Laravel jetstream's scaffolding for [Materio admin Template](#). It'll not work with any other project
+
+[Download from packagist](https://packagist.org/packages/themeselection/materio-html-laravel-jetstream)
 
 ## Description
 
 Laravel Jetstream is designed using Tailwind CSS and offers your choice of Livewire or Inertia scaffolding. We have removed the Tailwind CSS dependency and modified the Livewire scaffolding as per our template. __Please note we have not provided Inertia scaffolding yet. This package only works with livewire scaffolding__.
 
-Master Laravel Jetstream is a lightweight laravel package that focuses on the `VIEW` side of [Jetstream](https://github.com/laravel/jetstream) package installed in your Laravel application, so when a swap is performed, the `Action`, `MODEL`, `CONTROLLER`, `Component` and `Action` classes of your project is still 100% handled by Laravel development team with no added layer of complexity.
+Materio Laravel Jetstream is a lightweight laravel package that focuses on the `VIEW` side of [Jetstream](https://github.com/laravel/jetstream) package installed in your Laravel application, so when a swap is performed, the `Action`, `MODEL`, `CONTROLLER`, `Component` and `Action` classes of your project is still 100% handled by Laravel development team with no added layer of complexity.
 
 ## Table of Content
 
-* [Installation](#installation)
-
-* [Installing Jetstream](#installing-jetstream)
-
-* [Install Jetstream With Livewire](#install-jetstream-with-livewire)
-
-* [Install Master Laravel Bootstrap Jetstream](#install-master-laravel-bootstrap-jetstream)
-
-* [Finalizing The Installation](#finalizing-the-installation)
-
-* [Extras](#extras)
-
-* [Pagination](#pagination)
-  
-* [License](#license)
+- [materio-html-laravel-jetstream](#materio-html-laravel-jetstream)
+        - [Specially customized Laravel jetstream's scaffolding for Materio admin Template. It'll not work with any other project.](#specially-customized-laravel-jetstreams-scaffolding-for-materio-admin-template-itll-not-work-with-any-other-project)
+  - [Description](#description)
+  - [Table of Content](#table-of-content)
+  - [Installation](#installation)
+    - [Installing Jetstream](#installing-jetstream)
+      - [Install Jetstream With Livewire](#install-jetstream-with-livewire)
+    - [Install Materio Laravel Bootstrap Jetstream](#install-materio-laravel-bootstrap-jetstream)
+    - [Finalizing The Installation](#finalizing-the-installation)
+    - [Extras](#extras)
+      - [Pagination](#pagination)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## Installation
 
@@ -37,7 +36,7 @@ Master Laravel Jetstream is a lightweight laravel package that focuses on the `V
 You may use Composer to install Jetstream into your new Laravel project:
 
 ```
-composer require laravel/jetstream
+composer require laravel/jetstream:4.0.2
 ```
 
 If you choose to install Jetstream through Composer, you should run the jetstream:install Artisan command. This command accepts the name of the stack you prefer (livewire). You are highly encouraged to read through the entire documentation of Livewire before beginning your Jetstream project. In addition, you may use the __--teams__ switch to enable team support:
@@ -56,15 +55,15 @@ or
 php artisan jetstream:install livewire --teams
 ```
 
-### Install Master Laravel Bootstrap Jetstream
+### Install Materio Laravel Bootstrap Jetstream
 
-Use Composer to install Master Jetstream into your new Laravel project as dev dependency:
+Use Composer to install Materio Jetstream into your new Laravel project as dev dependency:
 
 ```
-composer require themeselection/master-laravel-bootstrap-jetstream --dev
+composer require themeselection/materio-laravel-bootstrap-jetstream --dev
 ```
 
-Regardless how you install Jetstream, Master Laravel Bootstrap Jetstream commands are very similar to that
+Regardless how you install Jetstream, Materio Laravel Bootstrap Jetstream commands are very similar to that
 
 of Jetstream as it accepts the name of the stack you would like to swap (livewire).
 
@@ -72,7 +71,7 @@ of Jetstream as it accepts the name of the stack you would like to swap (livewir
 
 You are highly encouraged to read through the entire documentation of [Jetstream](https://jetstream.laravel.com/1.x/introduction.html)
 
-before beginning your Master Laravel Jetstream project. In addition, you may use the `--teams` switch to swap team assets just like you would in Jetstream:
+before beginning your Materio Laravel Jetstream project. In addition, you may use the `--teams` switch to swap team assets just like you would in Jetstream:
 
 ```bash
 // without teams support
@@ -90,7 +89,7 @@ This will publish overrides to enable Bootstrap like the good old days!
 
 ### Finalizing The Installation
 
-After installing Master jetstream and swapping Jetstream resources, remove tailwindCSS and its dependencies if any from your package.json and then install and build your NPM dependencies and migrate your database:
+After installing Materio jetstream and swapping Jetstream resources, remove tailwindCSS and its dependencies if any from your package.json and then install and build your NPM dependencies and migrate your database:
 
 ```
 npm install && npm run dev
@@ -151,4 +150,4 @@ This packages is built on top of [Jetstream](https://github.com/laravel/jetstrea
 
 ## License
 
-Master Jetstream is open-sourced software licensed under the [MIT license](https://github.com/themeselection/master-laravel-bootstrap-jetstream/blob/master/LICENSE).
+Materio Jetstream is open-sourced software licensed under the [MIT license](https://github.com/themeselection/materio-html-laravel-jetstream/blob/master/LICENSE).
