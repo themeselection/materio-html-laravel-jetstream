@@ -5,7 +5,7 @@
 
 ##### Specially customized Laravel jetstream's scaffolding for [Materio admin Template](#). It'll not work with any other project
 
-[Download from packagist](https://packagist.org/packages/themeselection/materio-html-laravel-jetstream)
+[Download from packagist](https://packagist.org/packages/themeselection/materio-laravel-bootstrap-jetstream)
 
 ## Description
 
