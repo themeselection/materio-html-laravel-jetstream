@@ -36,7 +36,7 @@ Materio Laravel Jetstream is a lightweight laravel package that focuses on the `
 You may use Composer to install Jetstream into your new Laravel project:
 
 ```
-composer require laravel/jetstream:4.0.2
+composer require laravel/jetstream
 ```
 
 If you choose to install Jetstream through Composer, you should run the jetstream:install Artisan command. This command accepts the name of the stack you prefer (livewire). You are highly encouraged to read through the entire documentation of Livewire before beginning your Jetstream project. In addition, you may use the __--teams__ switch to enable team support:
@@ -92,11 +92,11 @@ This will publish overrides to enable Bootstrap like the good old days!
 After installing Materio jetstream and swapping Jetstream resources, remove tailwindCSS and its dependencies if any from your package.json and then install and build your NPM dependencies and migrate your database:
 
 ```
-npm install && npm run dev
+npm install && npm run build
 
 or  
 
-yarn && yarn dev
+yarn && yarn build
 
 
 php artisan migrate

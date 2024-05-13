@@ -36,12 +36,9 @@ class InstallCommand extends Command
     if ((new Filesystem)->exists(base_path('tailwind.config.js'))) {
       (new Filesystem)->delete(base_path('tailwind.config.js'));
     }
-
+    
     if ((new Filesystem)->exists(base_path('postcss.config.js'))) {
       (new Filesystem)->delete(base_path('postcss.config.js'));
-    }
-    if ((new Filesystem)->exists(base_path('vite.config.js'))) {
-      (new Filesystem)->delete(base_path('vite.config.js'));
     }
 
     if ((new Filesystem)->exists(resource_path('views/dashboard.blade.php'))) {
@@ -64,30 +61,47 @@ class InstallCommand extends Command
       (new Filesystem)->delete(resource_path('views/layouts/guest.blade.php'));
     }
 
-    if ((new Filesystem)->exists(resource_path('js/app.js'))) {
-      copy(__DIR__ . '/../../../../stubs/app.js', resource_path('js/app.js'));
-    }
-
-    if ((new Filesystem)->exists(resource_path('js/bootstrap.js'))) {
-      (new Filesystem)->delete(resource_path('js/bootstrap.js'));
-    }
-
     // "/" Route...
-    $this->replaceInFile('/dashboard', '/', app_path('Providers/RouteServiceProvider.php'));
+    $this->replaceInFile('/dashboard', '/', base_path('config/fortify.php'));
+   
+    // Update routes in web.php
+  $originalRoute = <<<'EOD'
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+EOD;
+
+  $newRoute = <<<'EOD'
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('content.dashboard.dashboards-analytics');
+    })->name('dashboard');
+});
+EOD;
+
+    $this->replaceInFile($originalRoute, $newRoute, base_path('routes/web.php'));
 
     // add components in navbar
     $this->replaceInFile('{{-- <x-switchable-team :team="$team" /> --}}', '<x-switchable-team :team="$team" />', resource_path('views/layouts/sections/navbar/navbar.blade.php'));
     $this->replaceInFile('{{-- <x-banner /> --}}', '<x-banner />', resource_path('views/layouts/contentNavbarLayout.blade.php'));
     $this->replaceInFile('{{-- <x-banner /> --}}', '<x-banner />', resource_path('views/layouts/horizontalLayout.blade.php'));
 
-
-    // Bootstrap Configuration...
-    copy(__DIR__ . '/../../../../stubs/webpack.mix.js', base_path('webpack.mix.js'));
-
     // app/views
     (new Filesystem)->deleteDirectory(app_path('View'));
     // Assets...
-    (new Filesystem)->deleteDirectory(resource_path('css'));
+    $cssFilePath = resource_path('css/app.css');
+    file_put_contents($cssFilePath, '');
+    
     (new Filesystem)->ensureDirectoryExists(resource_path('views'));
 
 
@@ -119,6 +133,7 @@ class InstallCommand extends Command
     $this->info('Installing livewire stack...');
 
     copy(__DIR__ . '/../../../../stubs/package.json', base_path('package.json'));
+    copy(__DIR__ . '/../../../../stubs/vite.config.js', base_path('vite.config.js'));
 
     // Directories...
     (new Filesystem)->ensureDirectoryExists(resource_path('views/api'));
@@ -147,7 +162,7 @@ class InstallCommand extends Command
 
     $this->line('');
     $this->info('Bootstrap scaffolding swapped for livewire successfully.');
-    $this->comment('Please execute the "npm install && npm run dev" OR "yarn && yarn dev" command to build your assets.');
+    $this->comment('Please execute the "npm install && npm run build" OR "yarn && yarn build" command to build your assets.');
   }
 
   /**

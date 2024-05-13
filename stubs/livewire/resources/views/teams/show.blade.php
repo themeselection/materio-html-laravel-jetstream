@@ -1,13 +1,14 @@
 @extends('layouts.layoutMaster')
 
 @php
-$breadcrumbs = [['link' => 'home', 'name' => 'Home'], ['name' => 'Team Settings']];
+  use Illuminate\Support\Facades\Gate;
+  $breadcrumbs = [['link' => 'home', 'name' => 'Home'], ['name' => 'Team Settings']];
 @endphp
 
 @section('title', 'Team Settings')
 
 @section('content')
-  <div class="mb-4">
+  <div class="mb-6">
     @livewire('teams.update-team-name-form', ['team' => $team])
   </div>
 
