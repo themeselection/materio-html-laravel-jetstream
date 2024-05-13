@@ -8,7 +8,7 @@
 @section('title', 'Team Settings')
 
 @section('content')
-  <div class="mb-4">
+  <div class="mb-6">
     @livewire('teams.update-team-name-form', ['team' => $team])
   </div>
 
